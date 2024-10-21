@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrapper">
+        <h1 class="form-heading">Login</h1>
+            <form action="" id="form">
+                <div class="field">
+                    <label for="name"></label>
+                    <input type="text" placeholder="Username" required>
+                    <i class='bx bxs-user' ></i>
+                </div>                
+                <div class="field">
+                    <label for="email"></label>
+                    <input type="email" placeholder="Email" required>
+                    <i class='bx bx-envelope'></i>
+                </div>
+                <div class="field">
+                    <label for="password"></label>
+                    <input type="password" placeholder="password" required>
+                    <i class='bx bxs-lock-alt' ></i>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> Remember me </label>
+                    <a href="#">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn">Login</button>
+
+                <div class="register-link">
+                    <p>Don`t have an account? <a href="#">Register</a></p>
+                </div>
+            </form>
+
+    </div>
+    <script>
+        var inputs = [].slice.call(document.querySelectorAll('input'))
+
+        inputs.forEach(function(input) {
+            if (input.getAttribute('type') !== 'submit') {
+                console.log(input);
+                if(input.value != '') {
+                    var label = document.querySelector('label[for="' + input.id + '"]');
+                    label.classList.add('focused');
+                }
+                input.addIventListener('focusin', focusinInputHandler, false);
+                input.addIventListener('focusout', focusoutInputHandler, false);
+            }
+        });
+        function focusinInputHandler() {
+            var label = document.querySelector('label[for="' + this.id + '"]');
+            label.classList.add('focused')
+            //console.log(label);
+            //console.log(this.id + ' focusin');
+        }
+        function focusinInputHandler() {
+            var label = document.querySelector('label[for="' + this.id + '"]');
+            if(this.value == '')
+            label.classList.remove('focused');
+            //console.log(this.id + ' focusout');
+        }
+
+    </script>
+</body>
+</html>
